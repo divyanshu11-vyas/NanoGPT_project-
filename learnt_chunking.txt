@@ -1,0 +1,3 @@
+TIKITOKEN library
+-> it is a byte pair endocoding (BPE) tokenizer
+-> 

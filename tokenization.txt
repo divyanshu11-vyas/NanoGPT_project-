@@ -1,0 +1,89 @@
+Tokenization
+-> A tokenizer converts your text into small pieces called tokens, and then maps each token to an integer ID.
+-> Instead of learning every word independently, the tokenizer can represent them using reusable pieces.
+-> better the vocabulary lessr the number of tokens are used
+
+
+                  cl100k_base
+                       │
+                       ├── vocabulary
+                       ├── token IDs
+                       ├── BPE merge behavior
+                       ├── special tokens
+                       └── encode/decode logic
+
+
+After encoding using the gpt 4 tokenizer
+I used a veryfy token distrubuter besause
+
+Total token count → how much training data you actually have.
+EOT count → whether your document boundaries/separators survived encoding.
+Most common tokens → whether something weird dominates the dataset.
+Unique-token count → whether your dataset actually uses a reasonable variety of the tokenizer's vocabulary.
+Vocabulary coverage → rough indication of how much of the tokenizer vocabulary your dataset touches.
+
+
+
+
+what does split_dataset function does?
+
+checking:
+
+Did tokenization actually produce tokens?
+Are your EOT separators still present?
+Does decoding the tokens produce sensible text?
+
+
+
+
+
+
+
+After that, the function saving bin files isnt mathematically required but
+that wont make me repeat the entire fucking this like
+load JSON
+   ↓
+clean text
+   ↓
+tiktoken encode  ← potentially expensive
+   ↓
+split dataset
+
+
+
+instead it makes the pipeline simpler
+
+ONE-TIME DATA PREPARATION
+
+quality_chunks.json
+        ↓
+clean
+        ↓
+tokenize
+        ↓
+split
+        ↓
+ ┌──────┼──────┐
+ ↓      ↓      ↓
+train.bin val.bin test.bin
+        ↓
+        ↓ later, repeatedly
+        ↓
+   train_model.py
+
+splits = {
+    "train.bin": [123, 483, 91, ...],
+    "val.bin":   [738, 293, 11, ...],
+    "test.bin":  [837, 193, 48, ...]
+}
+
+
+
+
+
+
+
+
+
+
+

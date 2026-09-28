@@ -1,0 +1,10 @@
+{
+  "vocab_size": 100277,
+  "eot_token": 100257,
+  "encoding": "cl100k_base",
+  "total_tokens": 639610,
+  "train_tokens": 575649,
+  "val_tokens": 31980,
+  "test_tokens": 31981,
+  "dtype": "uint32"
+}
